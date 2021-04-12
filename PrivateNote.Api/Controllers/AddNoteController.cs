@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using Ganss.XSS;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using PrivateNote.Core;
@@ -23,9 +24,12 @@ namespace PrivateNote.Controllers
         }
         
         [HttpPost]
-        public string Add([Required][FromForm] string noteString)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<string> Add([Required][FromForm] string noteString)
         {
             string noteStringSanitized = new HtmlSanitizer().Sanitize(noteString);
+            if (string.IsNullOrWhiteSpace(noteStringSanitized)) return BadRequest();
             
             using (var db = new NoteContext(_dbConnectionString))
             {

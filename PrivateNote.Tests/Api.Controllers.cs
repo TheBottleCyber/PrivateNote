@@ -31,7 +31,7 @@ namespace PrivateNote.Tests
         public void AddNote(string noteString)
         {
             var addNoteController = new AddNoteController(_config);
-            string hash = addNoteController.Add(noteString);
+            string hash = addNoteController.Add(noteString).Value;
             
             using (var db = new NoteContext(dataBaseConnection))
             {
@@ -53,7 +53,7 @@ namespace PrivateNote.Tests
         {
             var addNoteController = new AddNoteController(_config);
             var getNodeController = new GetNoteController(_config);
-            string hash = addNoteController.Add(noteString);
+            string hash = addNoteController.Add(noteString).Value;
 
             using (var db = new NoteContext(dataBaseConnection))
             {
@@ -62,7 +62,7 @@ namespace PrivateNote.Tests
                 if (note != null)
                 {
                     Assert.AreEqual(note.NoteString, noteString);
-                    string getNote = getNodeController.Get(hash);
+                    string getNote = getNodeController.Get(hash).Value;
                     Assert.AreEqual(note.NoteString, getNote);
                     
                     var noteAfterGet = db.Notes.FirstOrDefault(x => x.Hash == hash);

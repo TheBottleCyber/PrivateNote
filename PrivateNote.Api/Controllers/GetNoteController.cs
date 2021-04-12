@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using PrivateNote.EntityFramework;
@@ -20,25 +21,20 @@ namespace PrivateNote.Controllers
         }
 
         [HttpGet]
-        public string Get([Required] string hash)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<string> Get([Required] string hash)
         {
             using (var db = new NoteContext(_dbConnectionString))
             {
                 var note = db.Notes.FirstOrDefault(x => x.Hash == hash);
 
-                if (note != null)
-                {
-                    db.Notes.Remove(note);
-                    db.SaveChanges();
+                if (note == null) return NotFound();
 
-                    return note.NoteString;
-                }
-                // else
-                // {
-                //     throw new Exception();
-                // }
+                db.Notes.Remove(note);
+                db.SaveChanges();
 
-                return string.Empty;
+                return note.NoteString;
             }
         }
     }
