@@ -2,7 +2,7 @@
 
 # Private Note
 
-Send notes that will self-destruct after being read
+Send notes that will self-destruct after being read using **ASP.NET Core Web Api**, **Entity Framework Core**, **Vue.js**
 
 <br/>
 <br/>
@@ -12,6 +12,7 @@ Send notes that will self-destruct after being read
 - Vue CLI v3.x or later.
 - Nodejs v10.x or later.
 - **Visual Studio 2019** or **Rider**
+- **.NET 5**
 
 ### Local Environment
 
