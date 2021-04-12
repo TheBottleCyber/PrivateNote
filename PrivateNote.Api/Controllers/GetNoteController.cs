@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,10 @@ namespace PrivateNote.Controllers
 
                     return note.NoteString;
                 }
+                // else
+                // {
+                //     throw new Exception();
+                // }
 
                 return string.Empty;
             }

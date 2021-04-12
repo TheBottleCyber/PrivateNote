@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateNote.Core", "Private
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateNote.Tests", "PrivateNote.Tests\PrivateNote.Tests.csproj", "{2F2D4D2B-1FB6-4D67-9C98-1B10E1FE1340}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateNote.Vue", "PrivateNote.Vue\PrivateNote.Vue.csproj", "{EBCC8194-1604-433B-A66F-1541DE47260E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{2F2D4D2B-1FB6-4D67-9C98-1B10E1FE1340}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F2D4D2B-1FB6-4D67-9C98-1B10E1FE1340}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F2D4D2B-1FB6-4D67-9C98-1B10E1FE1340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBCC8194-1604-433B-A66F-1541DE47260E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBCC8194-1604-433B-A66F-1541DE47260E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBCC8194-1604-433B-A66F-1541DE47260E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBCC8194-1604-433B-A66F-1541DE47260E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

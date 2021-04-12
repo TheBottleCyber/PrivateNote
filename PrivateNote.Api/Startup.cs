@@ -26,6 +26,13 @@ namespace PrivateNote
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(o => o.AddPolicy("policy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+            
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "PrivateNote.Api", Version = "v1" }); });
         }
@@ -33,6 +40,8 @@ namespace PrivateNote
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("policy");
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

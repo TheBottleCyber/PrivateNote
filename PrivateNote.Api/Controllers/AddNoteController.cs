@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using Ganss.XSS;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using PrivateNote.Core;
@@ -22,7 +23,7 @@ namespace PrivateNote.Controllers
         }
         
         [HttpPost]
-        public string Add([Required] string noteString)
+        public string Add([Required][FromForm] string noteString)
         {
             string noteStringSanitized = new HtmlSanitizer().Sanitize(noteString);
             
